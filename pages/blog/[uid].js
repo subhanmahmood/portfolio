@@ -4,9 +4,13 @@ import Navbar from '../../lib/components/Navbar'
 import MainLayout from '../../lib/components/MainLayout'
 import { fetchBlogPosts } from '../../utils/queries'
 import Client from '../../utils/prismicHelpers'
+import { RichText } from 'prismic-reactjs'
+import { linkResolver } from '../../prismicConfiguration'
+import { htmlSerializer } from '../../utils/htmlSerializer'
 
 export default function index(props) {
-    console.log(props.author.data)
+    const headings = props.blogPost.data.content.filter((item) => item.type === 'heading2')
+
     return (
         <MainLayout>
             <div className="container mx-auto">
@@ -26,20 +30,17 @@ export default function index(props) {
             <section className="container mx-auto py-24">
                 <div className="px-4 md:w-8/12 lg:w-6/12 mx-auto">
                     <div className="flex flex-col text-lg text-gray-700 pb-8">
-                        <a className="px-3 py-2 border-l-4 border-gray-200 hover:border-gray-300">My setup</a>
-                        <a className="px-3 py-2 border-l-4 border-gray-200 hover:border-gray-300">My setup</a>
-                        <a className="px-3 py-2 border-l-4 border-gray-400 text-black">My setup</a>
-                        <a className="px-3 py-2 border-l-4 border-gray-200 hover:border-gray-300">My setup</a>
-                        <a className="px-3 py-2 border-l-4 border-gray-200 hover:border-gray-300">My setup</a>
-                        <a className="px-3 py-2 border-l-4 border-gray-200 hover:border-gray-300">My setup</a>
+                        {
+                            headings.map((heading, i) => {
+                                console.log(heading)
+                                return (
+                                    <a href={`#${heading.text}`} key={`toc-${i}`} className="px-3 py-2 border-l-4 border-gray-200 hover:border-gray-300">{heading.text}</a>
+                                )
+                            })
+                        }
                     </div>
                     <article className="prose lg:prose-xl">
-                        <h2>Lorem Ipsum</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dui mi dui ut fusce placerat mi tellus neque. Mi massa hendrerit sed id elit ut amet. Vitae lectus amet, a vitae iaculis volutpat dolor sem sed. Nulla massa in pharetra phasellus laoreet ullamcorper quis. Id tempus nam nisl euismod leo arcu senectus. Quis habitant eros vulputate platea aenean ac. Quam sed at lorem potenti. Morbi elit posuere accumsan neque cras facilisis. Scelerisque odio vel sit sapien. In sed aliquet aliquam sapien, tincidunt viverra viverra mi. Et, ac elit proin sit molestie euismod. Condimentum sed vitae tortor ut. Interdum purus imperdiet erat commodo. Orci, quis tempus mauris cum fermentum, natoque.</p>
-                        <ul>
-                            <li>Item 1</li>
-                            <li>Item 2</li>
-                        </ul>
+                        <RichText render={props.blogPost.data.content} htmlSerializer={htmlSerializer} />
                     </article>
                 </div>
             </section>
@@ -61,16 +62,16 @@ export default function index(props) {
 
 export async function getStaticProps({ params }) {
     console.log(params)
-    const {uid} = params
+    const { uid } = params
     const blogPost = await Client().getByUID(
         'blog',
         uid
     )
-    
+
     const author = await Client().getByID(blogPost.data.author.id)
 
     return {
-        props: {uid, blogPost, author}
+        props: { uid, blogPost, author }
     }
 }
 

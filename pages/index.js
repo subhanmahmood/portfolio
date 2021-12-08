@@ -8,6 +8,8 @@ import AnimatedSection from '../lib/components/AnimatedSection'
 import { fetchBlogPost, fetchBlogPosts, queryBlogPosts, queryRepeatableDocuments } from '../utils/queries'
 import Client from '../utils/prismicHelpers'
 import Prismic from '@prismicio/client'
+import { htmlSerializer } from '../utils/htmlSerializer'
+
 
 export default function Home(props) {
 

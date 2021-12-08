@@ -24,3 +24,7 @@ body {
 a {
     @apply cursor-pointer;
 }
+
+:target {
+    scroll-margin-top: 40px;
+}
