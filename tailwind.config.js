@@ -1,9 +1,12 @@
 module.exports = {
-  purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./lib/components/**/*.{js,ts,jsx,tsx}",
+  ],
   darkMode: false, // or 'media' or 'class'
   theme: {
     fontFamily: {
-      'display': ['Poppins', 'ui-sans-serif', 'system-ui']
+      'display': ['Outfit', 'ui-sans-serif', 'system-ui']
     }
   },
   variants: {
