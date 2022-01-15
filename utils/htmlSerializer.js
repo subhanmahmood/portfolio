@@ -59,7 +59,7 @@ export const htmlSerializer = function (type, element, content, children, key) {
             const linkUrl = element.linkTo ? element.linkTo.url || linkResolver(element.linkTo) : null;
             const linkTarget = (element.linkTo && element.linkTo.target) ? { target: element.linkTo.target } : {};
             const linkRel = linkTarget.target ? { rel: 'noopener' } : {};
-            const img = React.createElement('img', { src: element.url, alt: element.alt || '' });
+            const img = React.createElement('img', { src: element.url, alt: element.alt || '', className: 'rounded-xl' });
             return React.createElement(
                 'p',
                 propsWithUniqueKey({ className: [element.label || '', 'block-img'].join(' ') }, key),

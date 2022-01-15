@@ -3,7 +3,7 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     fontFamily: {
-      'display': ['Poppins', 'ui-sans-serif', 'system-ui']
+      'display': ['Plus Jakarta Sans', 'ui-sans-serif', 'system-ui']
     }
   },
   variants: {

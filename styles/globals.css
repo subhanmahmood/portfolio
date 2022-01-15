@@ -1,3 +1,4 @@
+@import url('https://cdn.jsdelivr.net/npm/plusplusjakartasans@latest/plusjakartasans.css');
 
 /**
  * This injects Tailwind's base styles and any base styles registered by
@@ -17,9 +18,7 @@
   */
  @tailwind utilities;
 
-body {
-    -webkit-font-smoothing: antialiased;
-}
+
 
 a {
     @apply cursor-pointer;

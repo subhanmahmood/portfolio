@@ -1,32 +1,33 @@
 import React from 'react'
-import Footer from '../../lib/components/Footer'
-import Navbar from '../../lib/components/Navbar'
+import MainLayout from '../../lib/components/MainLayout'
+
+function LinkCard() {
+    return (
+        <div className="flex flex-row py-7 items-center rounded-2xl border-gray-200 border transition-all hover:shadow-md">
+            <div className="mx-7">
+                <img src="/icons/airplay.svg" />
+            </div>
+            <p className="text-2xl font-medium">Setup Links</p>
+        </div>
+    )
+}
 
 export default function index() {
     return (
         <MainLayout>
             <div className="container mx-auto">
                 <div className="w-8/12 mx-auto">
-                    <div className="flex flex-col items-center justify-center pt-48 space-y-12">
+                    <div className="flex flex-col items-center justify-center pt-28 md:pt-48 space-y-12">
                         <div className="flex flex-col space-y-4">
-                            <h1 className="font-extrabold text-6xl text-center leading-tight">Hi, if you're here from TikTok or Instagram, you'll probably find what you're looking for here</h1>
-                            <h2 className="font-medium text-3xl text-center text-gray-500">If not, drop me a message on Instagram and I'll do my best</h2>
-                        </div>
-                        <div className="flex flex-row space-x-4 items-center">
-                            <img src="/profile.jpg" className="rounded-full h-12 w-12" />
-                            <p className="text-gray-700">by <b>Subhan Mahmood</b></p>
+                            <h1 className="font-extrabold text-6xl text-center leading-tight">Links</h1>
+                            <h2 className="font-medium text-lg md:text-3xl text-center text-gray-500">Hi, if you're here from TikTok or Instagram, you'll probably find what you're looking for here. If not, drop me a message on Instagram and I'll do my best</h2>
                         </div>
                     </div>
                 </div>
             </div>
-            <section className="container mx-auto py-24">
-                <div className="w-4/12 mx-auto flex flex-col space-y-8">
-                    <div className="flex flex-row py-7 items-center rounded-2xl border-gray-200 border transition-all hover:shadow-md">
-                        <div className="mx-7">
-                            <img src="/icons/airplay.svg" />
-                        </div>
-                        <p className="text-2xl font-medium">Setup Links</p>
-                    </div>
+            <section className="container mx-auto pt-12 pb-24">
+                <div className="w-full px-5 md:w-4/12 mx-auto flex flex-col space-y-8">
+
                     <div className="flex flex-row py-7 items-center rounded-2xl border-gray-200 border transition-all hover:shadow-md">
                         <div className="mx-7">
                             <img src="/icons/airplay.svg" />
