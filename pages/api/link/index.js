@@ -35,5 +35,16 @@ export default async function handler(req, res) {
         } else {
             res.status(200).json(data)
         }
+    } else if (req.method === 'PUT') {
+        const { data, error } = await supabase
+            .from('links')
+            .update({ name: req.body.name, url: req.body.url, order: req.body.order })
+            .match({ id: req.body.id })
+        if (error) {
+            console.log(error)
+            res.status(500).json({ error: error })
+        } else {
+            res.status(200).json(data)
+        }
     }
 }
