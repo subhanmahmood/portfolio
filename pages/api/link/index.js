@@ -16,7 +16,7 @@ export default async function handler(req, res) {
         }
     } else if (req.method === 'GET') {
         const { data, error } = await supabase
-            .from('links')
+            .from('link_details')
             .select()
         if (error) {
             console.log(error)

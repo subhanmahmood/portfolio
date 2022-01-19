@@ -1,3 +1,4 @@
+import AuthProvider from 'lib/contexts/AuthContext'
 import Document, {
     Html,
     Head,

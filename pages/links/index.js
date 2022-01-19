@@ -3,19 +3,20 @@ import React, { useEffect, useState, useRef } from 'react'
 import MainLayout from '../../lib/components/MainLayout'
 import AddLinkForm from 'lib/components/AddLinkForm'
 import LinkCard from 'lib/components/LinkCard'
-import Sortable from 'sortablejs';
+import { useAuth } from 'lib/contexts/AuthContext'
 import { ReactSortable } from "react-sortablejs";
 
 
 
-
 export default function index() {
+    const { currentUser } = useAuth()
     const [links, setLinks] = useState([])
 
     useEffect(() => {
         const fetchLinks = async () => {
             try {
                 const res = await axios.get('/api/link')
+                console.log(res.data)
                 setLinks(res.data.sort((a, b) => a.order - b.order))
             } catch (err) {
                 console.log(err)
@@ -38,7 +39,7 @@ export default function index() {
         try {
             const res = await axios.put('/api/link', link)
             console.log(res)
-            if(updateState){
+            if (updateState) {
                 let updatedLinks = Object.assign(links)
                 const idx = updatedLinks.indexOf(updatedLinks.find(l => l.id === link.id))
                 updatedLinks[idx] = res.data[0];
@@ -52,7 +53,6 @@ export default function index() {
     const deleteLink = async (link) => {
         try {
             const res = await axios.delete('/api/link', { data: { id: link.id } })
-            console.log(res)
             setLinks(links.filter(l => l.id !== link.id))
         } catch (err) {
             console.log(err)
@@ -95,7 +95,7 @@ export default function index() {
                             <LinkCard key={link.id} data={link} updateLink={updateLink} deleteLink={deleteLink} />)
                         }
                     </ReactSortable>
-                    <AddLinkForm onSubmit={addLink} />
+                    {currentUser && <AddLinkForm onSubmit={addLink} />}
                 </div>
             </div>
         </MainLayout>

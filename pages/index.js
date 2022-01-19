@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react'
 import Head from 'next/head'
 import { motion, AnimatePresence } from 'framer-motion'
 import FAQItem from '../lib/components/FAQItem'
@@ -9,9 +10,18 @@ import { fetchBlogPost, fetchBlogPosts, queryBlogPosts, queryRepeatableDocuments
 import Client from '../utils/prismicHelpers'
 import Prismic from '@prismicio/client'
 import { htmlSerializer } from '../utils/htmlSerializer'
+import { useAuth } from 'lib/contexts/AuthContext'
+import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 
 export default function Home(props) {
+  const router = useRouter()
+  const { logout, currentUser } = useAuth()
+
+  useEffect(() => {
+    console.log(currentUser)
+  }, [currentUser])
 
   const WorkSectionVariants = {
     hidden: {
@@ -24,6 +34,15 @@ export default function Home(props) {
       transition: {
         duration: 0.5,
       }
+    }
+  }
+
+  const logoutAndRedirect = async () => {
+    try {
+      logout()
+      router.push('/auth/login')
+    } catch (err) {
+      console.log(err)
     }
   }
 
@@ -127,8 +146,17 @@ export default function Home(props) {
     <div className="min-h-screen w-full flex flex-col items-center justify-center">
       <h1 className="font-bold text-neutral-800 text-8xl">Coming soon...</h1>
       <p className="text-neutral-600 mt-4 text-xl">Check this out in the meantime</p>
+      {
+        currentUser ? (
+          <button onClick={() => logoutAndRedirect()} className="px-4 py-2 rounded border border-neutral-200">Logout</button>
+        ) : (
+          <Link href="/auth/login">
+            <a className="px-4 py-2 rounded border border-neutral-200">Login</a>
+          </Link>
+        )
+      }
     </div>
-  ) 
+  )
 }
 
 export async function getStaticProps() {
