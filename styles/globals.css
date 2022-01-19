@@ -1,21 +1,20 @@
-
 /**
  * This injects Tailwind's base styles and any base styles registered by
  * plugins.
  */
- @tailwind base;
+@tailwind base;
 
- /**
+/**
   * This injects Tailwind's component classes and any component classes
   * registered by plugins.
   */
- @tailwind components;
- 
- /**
+@tailwind components;
+
+/**
   * This injects Tailwind's utility classes and any utility classes registered
   * by plugins.
   */
- @tailwind utilities;
+@tailwind utilities;
 
 body {
     -webkit-font-smoothing: antialiased;
@@ -27,4 +26,14 @@ a {
 
 :target {
     scroll-margin-top: 40px;
+}
+
+#email-wrapper {
+    margin-top: 160px !important;
+    margin-bottom: 90px !important;
+}
+
+.formkit-form {
+    margin-left: auto;
+    margin-right: auto;
 }
