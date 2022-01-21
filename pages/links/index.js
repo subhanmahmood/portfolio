@@ -6,6 +6,7 @@ import LinkCard from 'lib/components/LinkCard'
 import { useAuth } from 'lib/contexts/AuthContext'
 import { ReactSortable } from "react-sortablejs";
 import { FaTiktok, FaLinkedinIn, FaInstagram, FaTwitter } from 'react-icons/fa';
+import Head from 'next/head'
 
 export default function index() {
     const { currentUser } = useAuth()
@@ -87,6 +88,9 @@ export default function index() {
 
     return (
         <div className="max-w-screen-sm mx-auto py-8 md:py-24">
+            <Head>
+                <title>subhan.io | Links</title>
+            </Head>
             <h1 className="font-bold text-center text-4xl md:text-6xl text-neutral-800">Links</h1>
             <p className="text-neutral-600 text-center text-lg md:text-xl">View all my links</p>
             <div className="hidden md:flex flex-row items-center justify-center space-x-12 mt-8 mb-8">
