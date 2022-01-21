@@ -66,7 +66,7 @@ export default function Home(props) {
 
       <section className="w-full md:px-0">
         <div className="-mb-48 px-4 md:px-0 md:shadow-xl relative w-full md:max-w-screen-md mx-auto grid grid-cols-1 md:grid-cols-2 mt-48" >
-          <div className="bg-cover" style={{ backgroundImage: 'url(/grad.jpg)' }} ></div>
+          <div className="bg-cover" style={{ backgroundImage: 'url(https://images.prismic.io/subhan/76107870-1c9e-421e-a775-dbfaf8550811_grad.JPG?auto=compress,format)' }} ></div>
           <div className="flex flex-col gap-y-4 p-6 md:p-8 max-w-sm bg-gray-200">
             <h3 className="font-medium text-4xl ">A little about me</h3>
             <p>I'm a frontend developer/designer and content creator with a passion for creating great user experiences.
