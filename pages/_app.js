@@ -12,8 +12,9 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     Fathom.load('JLAPRQBL', {
-      includedDomains: ['subhan.io']
+      includedDomains: ['www.subhan.io']
     })
+
     function onRouteChangeComplete() {
       Fathom.trackPageview();
     }
