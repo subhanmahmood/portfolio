@@ -44,7 +44,7 @@ export default function index() {
             if (updateState) {
                 let updatedLinks = Object.assign(links)
                 const idx = updatedLinks.indexOf(updatedLinks.find(l => l.id === link.id))
-                updatedLinks[idx] = res.data[0];
+                updatedLinks[idx] = link;
                 setLinks([...updatedLinks])
             }
         } catch (err) {
