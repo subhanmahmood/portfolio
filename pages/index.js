@@ -12,7 +12,7 @@ import { useAuth } from 'lib/contexts/AuthContext'
 import { useRouter } from 'next/router'
 import { ChevronRightIcon, UserIcon, PlayIcon, HeartIcon } from '@heroicons/react/outline'
 import Link from 'next/link'
-
+import Script from 'next/script'
 
 
 export default function Home(props) {
@@ -35,10 +35,12 @@ export default function Home(props) {
       }
     }
   }
-  
+
   return (
     <MainLayout className="font-display flex flex-col-reverse md:flex-col items-center min-h-screen">
       <Head>
+        <script data-uid="2cba1297dc" src="https://prodigious-trader-6281.ck.page/2cba1297dc/index.js" />
+
         <title>Home</title>
       </Head>
       <header className="py-72 max-w-screen-xl mx-auto flex flex-col items-center justify-center h-[40vh]">
@@ -73,29 +75,29 @@ export default function Home(props) {
             <div className="flex">
               <div className="flex-1 flex flex-col space-y-2">
                 <div className="flex items-center space-x-2">
-                  <ChevronRightIcon className="h-4 text-neutral-500"/>
+                  <ChevronRightIcon className="h-4 text-neutral-500" />
                   <p>JavaScript</p>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <ChevronRightIcon className="h-4 text-neutral-500"/>
+                  <ChevronRightIcon className="h-4 text-neutral-500" />
                   <p>Next.js</p>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <ChevronRightIcon className="h-4 text-neutral-500"/>
+                  <ChevronRightIcon className="h-4 text-neutral-500" />
                   <p>React</p>
                 </div>
               </div>
               <div className="flex-1 flex flex-col space-y-2">
                 <div className="flex items-center space-x-2">
-                  <ChevronRightIcon className="h-4 text-neutral-500"/>
+                  <ChevronRightIcon className="h-4 text-neutral-500" />
                   <p>PostgreSQL</p>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <ChevronRightIcon className="h-4 text-neutral-500"/>
+                  <ChevronRightIcon className="h-4 text-neutral-500" />
                   <p>Figma</p>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <ChevronRightIcon className="h-4 text-neutral-500"/>
+                  <ChevronRightIcon className="h-4 text-neutral-500" />
                   <p>Firebase</p>
                 </div>
               </div>
@@ -143,7 +145,7 @@ export default function Home(props) {
       </section>
       <section className="pb-48 w-full" id="contact">
         <div className="mx-auto max-w-screen-xl px-6 -my-20">
-          <script async data-uid="2cba1297dc" src="https://prodigious-trader-6281.ck.page/2cba1297dc/index.js"></script>
+          <script data-uid="2cba1297dc" src="https://prodigious-trader-6281.ck.page/2cba1297dc/index.js" />
         </div>
       </section>
     </MainLayout>

@@ -3,6 +3,7 @@ import * as Prismic from '@prismicio/client'
 import Client from 'utils/prismicHelpers'
 import { AcademicCapIcon, CalculatorIcon, ChartSquareBarIcon, ClipboardListIcon, FolderIcon, SparklesIcon } from '@heroicons/react/outline'
 import Head from 'next/head'
+import Script from 'next/script'
 
 function CTAButton() {
   return <a href="#templates" className="px-6 py-4 max-w-max bg-black text-white transition-all hover:shadow-xl hover:-translate-y-2">Get me organised</a>
@@ -102,6 +103,8 @@ export default function Home(props) {
     <>
       <Head>
         <title>Notion templates by Subhan Mahmood</title>
+        <script async data-uid="f89bfb05b0" src="https://prodigious-trader-6281.ck.page/f89bfb05b0/index.js" />
+
         <meta name="description" content="A collection of carefully crafted Notion Templates to help you be more productive and get more done." />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link
@@ -206,7 +209,8 @@ export default function Home(props) {
         </section>
         <section className="bg-gradient-to-tr from-amber-200 to-amber-500" id="email-wrapper">
           <div className="mx-auto max-w-screen-xl px-6 -my-20">
-            <script async data-uid="f89bfb05b0" src="https://prodigious-trader-6281.ck.page/f89bfb05b0/index.js"></script>
+            <script async data-uid="f89bfb05b0" src="https://prodigious-trader-6281.ck.page/f89bfb05b0/index.js" />
+            {/* <Script async data-uid="f89bfb05b0" src="https://prodigious-trader-6281.ck.page/f89bfb05b0/index.js" /> */}
           </div>
         </section>
         <section>
