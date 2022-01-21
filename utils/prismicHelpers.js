@@ -1,5 +1,5 @@
 // ~/utils/prismicHelpers.js
-import Prismic from '@prismicio/client'
+import * as prismic from '@prismicio/client'
 import Link from 'next/link'
 import {
   apiEndpoint,
@@ -8,7 +8,7 @@ import {
   Router
 } from '../prismicConfiguration'
 
-// Helper function to convert Prismic Rich Text links to Next/Link components
+// Helper function to convert prismic Rich Text links to Next/Link components
 export const customLink = (type, element, content, children, index) => (
   <Link
     key={index}
@@ -19,10 +19,8 @@ export const customLink = (type, element, content, children, index) => (
 )
 
 // -- @prismicio/client initialisation
-// Initialises the Prismic Client that's used for querying the API and passes it any query options.
-export const Client = (req = null) => (
-  Prismic.client(apiEndpoint, createClientOptions(req, accessToken, Router))
-);
+// Initialises the prismic Client that's used for querying the API and passes it any query options.
+export const Client = prismic.createClient(apiEndpoint)
 
 // Options to be passed to the Client
 const createClientOptions = (req = null, prismicAccessToken = null, routes = null) => {
@@ -35,5 +33,6 @@ const createClientOptions = (req = null, prismicAccessToken = null, routes = nul
     ...routesOption,
   }
 }
+
 
 export default Client
