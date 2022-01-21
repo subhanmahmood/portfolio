@@ -1,14 +1,16 @@
 import { motion, AnimatePresence } from "framer-motion"
+import AuthProvider from "lib/contexts/AuthContext"
 
 import 'tailwindcss/tailwind.css'
-import "@fontsource/poppins";
 import "../styles/globals.css"
 
 function MyApp({ Component, pageProps }) {
   return (
-    <AnimatePresence>
-      <Component {...pageProps} />
-    </AnimatePresence>
+    <AuthProvider>
+      <AnimatePresence>
+        <Component {...pageProps} />
+      </AnimatePresence>
+    </AuthProvider>
   )
 }
 

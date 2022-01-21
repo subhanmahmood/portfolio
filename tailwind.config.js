@@ -1,9 +1,13 @@
 module.exports = {
-  purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./lib/components/**/*.{js,ts,jsx,tsx}",
+  ],
   darkMode: false, // or 'media' or 'class'
   theme: {
     fontFamily: {
-      'display': ['Plus Jakarta Sans', 'ui-sans-serif', 'system-ui']
+      'display': ['Outfit', 'ui-sans-serif', 'system-ui'],
+      'code': ['ui-monospace', "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", "monospace"]
     }
   },
   variants: {
@@ -13,7 +17,7 @@ module.exports = {
       translate: ['group-hover']
     },
   },
-  plugins: [
+plugins: [
     require('@tailwindcss/typography'),
   ],
 }
