@@ -6,7 +6,8 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     fontFamily: {
-      'display': ['Outfit', 'ui-sans-serif', 'system-ui']
+      'display': ['Outfit', 'ui-sans-serif', 'system-ui'],
+      'code': ['ui-monospace', "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", "monospace"]
     }
   },
   variants: {
