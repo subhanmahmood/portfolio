@@ -33,7 +33,7 @@ function SignUp() {
 
     return (
         <AuthProvider>
-            <div className="max-w-[250px] mx-auto">
+            {/* <div className="max-w-[250px] mx-auto">
                 <div className="rounded-md border border-neutral-200 shadow-md mt-12">
                     <div className="p-4">
                         <h2 className="text-2xl font-medium text-center mb-4">Sign Up</h2>
@@ -54,6 +54,9 @@ function SignUp() {
                 <div className="w-100 text-center mt-2">
                     Already have an account? <Link href="/auth/login"><a className="text-neutral-500">Sign In</a></Link>
                 </div>
+            </div> */}
+            <div className="flex flex-col items-center justify-center min-h-screen">
+                <h1 className="text-6xl font-medium">Unavailable</h1>
             </div>
         </AuthProvider>
     )
