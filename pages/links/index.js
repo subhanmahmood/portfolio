@@ -6,8 +6,6 @@ import LinkCard from 'lib/components/LinkCard'
 import { useAuth } from 'lib/contexts/AuthContext'
 import { ReactSortable } from "react-sortablejs";
 
-
-
 export default function index() {
     const { currentUser } = useAuth()
     const [links, setLinks] = useState([])
