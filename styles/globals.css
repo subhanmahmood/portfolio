@@ -36,6 +36,11 @@ a {
     margin-right: auto;
 }
 
+.seva-form.formkit-form {
+    padding: 0px 16px 0px 16px;
+    width: 100%;
+}
+
 .project {
     position: relative;
     display: grid;

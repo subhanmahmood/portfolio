@@ -3,7 +3,7 @@ import * as Prismic from '@prismicio/client'
 import Client from 'utils/prismicHelpers'
 import { AcademicCapIcon, CalculatorIcon, ChartSquareBarIcon, ClipboardListIcon, FolderIcon, SparklesIcon } from '@heroicons/react/outline'
 import Head from 'next/head'
-import Script from 'next/script'
+
 
 function CTAButton() {
   return <a href="#templates" className="px-6 py-4 max-w-max bg-black text-white transition-all hover:shadow-xl hover:-translate-y-2">Get me organised</a>

@@ -90,6 +90,7 @@ export default function index() {
         <div className="max-w-screen-sm mx-auto py-8 md:py-24">
             <Head>
                 <title>subhan.io | Links</title>
+                <script async data-uid="0984e58a42" src="https://prodigious-trader-6281.ck.page/0984e58a42/index.js"></script>
             </Head>
             <h1 className="font-bold text-center text-4xl md:text-6xl text-neutral-800">Links</h1>
             <p className="text-neutral-600 text-center text-lg md:text-xl">View all my links</p>
@@ -117,6 +118,13 @@ export default function index() {
                     }
                 </ReactSortable>
                 {currentUser && <AddLinkForm onSubmit={addLink} />}
+            </div>
+            <div className="flex flex-col items-center justify-center space-y-4 py-12">
+                <h2 className="text-2xl md:text-4x text-neutral-800">Get the good stuff</h2>
+                <p className="prose-lg text-neutral-600">No spam ever. I promise.</p>
+                <div className="max-w-screen-sm">
+                <script async data-uid="0984e58a42" src="https://prodigious-trader-6281.ck.page/0984e58a42/index.js"></script>
+                </div>
             </div>
         </div>
     )
