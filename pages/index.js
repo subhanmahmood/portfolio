@@ -1,12 +1,10 @@
 import React, { useEffect } from 'react'
 import Head from 'next/head'
 import { motion, AnimatePresence } from 'framer-motion'
-import FAQItem from '../lib/components/FAQItem'
 import MainLayout from '../lib/components/MainLayout'
 import ServiceItem from '../lib/components/ServiceItem'
 import WorkCard from '../lib/components/WorkCard'
 import AnimatedSection from '../lib/components/AnimatedSection'
-import { fetchBlogPost, fetchBlogPosts, queryBlogPosts, queryRepeatableDocuments } from '../utils/queries'
 import Client from '../utils/prismicHelpers'
 import * as Prismic from '@prismicio/client'
 import { htmlSerializer } from '../utils/htmlSerializer'
@@ -16,9 +14,13 @@ import { ChevronRightIcon, UserIcon, PlayIcon, HeartIcon } from '@heroicons/reac
 import Link from 'next/link'
 
 
+
 export default function Home(props) {
   const router = useRouter()
   console.log(props.workItems)
+
+  const work = props.workItems.filter(w => w.data.category === 'Work')
+  const projects = props.workItems.filter(w => w.data.category === 'Project')
 
   const WorkSectionVariants = {
     hidden: {
@@ -33,7 +35,7 @@ export default function Home(props) {
       }
     }
   }
-
+  
   return (
     <MainLayout className="font-display flex flex-col-reverse md:flex-col items-center min-h-screen">
       <Head>

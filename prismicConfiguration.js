@@ -14,7 +14,7 @@ export const accessToken = ''
 // Manages the url links to internal Prismic documents
 export const linkResolver = (doc) => {
   if (doc.type === 'blog') {
-    return `/${doc.uid}`
+    return `blog/${doc.uid}`
   }
   return '/'
 }
@@ -22,10 +22,4 @@ export const linkResolver = (doc) => {
 // -- Route Resolver rules
 // Manages the url links to internal Prismic documents two levels deep (optionals)
 export const Router = {
-  routes: [
-    {
-      "type":"blog",
-      "path":"/:uid"
-    },
-  ]
 };

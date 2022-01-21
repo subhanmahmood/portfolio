@@ -9,7 +9,8 @@ import { linkResolver } from '../../prismicConfiguration'
 import { htmlSerializer } from '../../utils/htmlSerializer'
 
 export default function index(props) {
-    const headings = props.blogPost.data.content.filter((item) => item.type === 'heading2')
+    const blogPostData = props.blogPost.data
+    const headings = blogPostData.content.filter((item) => item.type === 'heading2')
 
     return (
         <MainLayout>
@@ -17,17 +18,18 @@ export default function index(props) {
                 <div className="px-5 md:w-8/12 mx-auto">
                     <div className="flex flex-col items-center justify-center pt-32 md:pt-48 space-y-4 md:space-y-12">
                         <div className="flex flex-col space-y-4">
-                            <h1 className="font-extrabold text-2xl md:text-6xl text-center leading-tight">{props.blogPost.data.title[0].text}</h1>
-                            <h2 className="font-medium text-lg md:text-3xl text-center text-gray-500">{props.blogPost.data.subtitle[0].text}</h2>
+                            <h1 className="font-extrabold text-2xl md:text-6xl text-center leading-tight">{blogPostData.title[0].text}</h1>
+                            <h2 className="font-medium text-lg md:text-3xl text-center text-gray-500">{blogPostData.subtitle[0].text}</h2>
                         </div>
                         <div className="flex flex-row space-x-4 items-center">
                             <img src={props.author.data.image.url} className="rounded-full h-6 w-6 md:h-12 md:w-12" />
                             <p className="text-gray-700">by <b>{props.author.data.name}</b></p>
                         </div>
+                        <div style={{backgroundImage: `url(${blogPostData.cover_image.url})`}} className="w-full h-64 md:h-96 bg-cover rounded-xl overflow-hidden py-16"></div>
                     </div>
                 </div>
             </div>
-            <section className="container mx-auto py-24">
+            <section className="container mx-auto py-12">
                 <div className="px-4 md:w-8/12 lg:w-6/12 mx-auto">
                     <div className="flex flex-col text-lg text-gray-700 pb-8">
                         {
@@ -40,7 +42,7 @@ export default function index(props) {
                         }
                     </div>
                     <article className="prose lg:prose-xl">
-                        <RichText render={props.blogPost.data.content} htmlSerializer={htmlSerializer} />
+                        <RichText render={blogPostData.content} htmlSerializer={htmlSerializer} />
                     </article>
                 </div>
             </section>
