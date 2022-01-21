@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Prismic from '@prismicio/client'
+import * as Prismic from '@prismicio/client'
 import Client from 'utils/prismicHelpers'
 import { AcademicCapIcon, CalculatorIcon, ChartSquareBarIcon, ClipboardListIcon, FolderIcon, SparklesIcon } from '@heroicons/react/outline'
 import Head from 'next/head'
@@ -225,7 +225,11 @@ export default function Home(props) {
 }
 
 export async function getStaticProps() {
-  const templateQuery = await Client().query(Prismic.Predicates.at("document.type", "notion_template"))
+  const templateQuery = await Client.get({ 
+      predicates: [
+        Prismic.Predicates.at("document.type", "notion_template")
+      ]
+  })
   const templates = templateQuery.results
 
   return {
