@@ -44,7 +44,7 @@ export default function Home(props) {
         <title>Home</title>
       </Head>
       <header className="py-72 max-w-screen-xl mx-auto flex flex-col items-center justify-center h-[40vh]">
-        <p className="text-lg font-medium">Hi, I'm Subhan</p>
+        <p className="text-2xl font-medium">Hi, I'm Subhan</p>
         <h1 className="text-6xl font-bold text-center max-w-screen-md">I&apos;m a frontend developer and content creator</h1>
         <p className="text-neutral-600 text-lg text-center max-w-screen-sm mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pretium id integer faucibus bibendum rhoncus felis feugiat feugiat.</p>
         <div className="flex flex-col md:flex-row justify-between space-y-4 md:space-y-0 md:space-x-8 my-4">
@@ -66,10 +66,12 @@ export default function Home(props) {
 
       <section className="w-full md:px-0">
         <div className="-mb-48 px-4 md:px-0 md:shadow-xl relative w-full md:max-w-screen-md mx-auto grid grid-cols-1 md:grid-cols-2 mt-48" >
-          <div className="bg-neutral-500"></div>
-          <div className="flex flex-col gap-y-4 p-6 md:p-12 max-w-sm bg-gray-200">
+          <div className="bg-cover" style={{ backgroundImage: 'url(/grad.jpg)' }} ></div>
+          <div className="flex flex-col gap-y-4 p-6 md:p-8 max-w-sm bg-gray-200">
             <h3 className="font-medium text-4xl ">A little about me</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc, egestas tempor faucibus facilisi. Sit in nulla in arcu facilisi consequat. Purus laoreet ultricies amet eu laoreet sed vulputate nibh. Et gravida tellus, leo congue enim vulputate volutpat molestie.</p>
+            <p>I'm a frontend developer/designer and content creator with a passion for creating great user experiences.
+
+I've been coding since I was 9, and in the last 10 years I've learnt a variety of technologies that enable me to craft high-quality, responsive digital experiences for my clients.</p>
             {/* <button className="max-w-max font-medium bg-black text-white px-6 py-4 shadow-md">View my work</button> */}
             <p>Technologies and tools I've been working with recently</p>
             <div className="flex">

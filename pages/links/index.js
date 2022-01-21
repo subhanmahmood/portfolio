@@ -83,22 +83,20 @@ export default function index() {
     }, [links])
 
     return (
-        <MainLayout>
-            <div className="max-w-screen-sm mx-auto py-24">
-                <h1 className="font-bold text-center text-6xl text-neutral-800">Links</h1>
-                <p className="text-neutral-600 text-center text-xl">View all my lnks</p>
-                <div className="max-w-[400px] mx-auto flex flex-col space-y-4 mt-4">
-                    <ReactSortable
-                        className="flex flex-col space-y-4"
-                        list={links}
-                        setList={setLinks}>
-                        {links.map((link, i) =>
-                            <LinkCard key={link.id} data={link} updateLink={updateLink} deleteLink={deleteLink} />)
-                        }
-                    </ReactSortable>
-                    {currentUser && <AddLinkForm onSubmit={addLink} />}
-                </div>
+        <div className="max-w-screen-sm mx-auto py-8 md:py-24">
+            <h1 className="font-bold text-center text-4xl md:text-6xl text-neutral-800">Links</h1>
+            <p className="text-neutral-600 text-center text-lg md:text-xl">View all my lnks</p>
+            <div className="max-w-[400px] px-4 mx-auto flex flex-col space-y-4 mt-4">
+                <ReactSortable
+                    className="flex flex-col space-y-4"
+                    list={links}
+                    setList={setLinks}>
+                    {links.map((link, i) =>
+                        <LinkCard key={link.id} data={link} updateLink={updateLink} deleteLink={deleteLink} />)
+                    }
+                </ReactSortable>
+                {currentUser && <AddLinkForm onSubmit={addLink} />}
             </div>
-        </MainLayout>
+        </div>
     )
 }
