@@ -2,8 +2,8 @@ import React from 'react'
 import Footer from '../../lib/components/Footer'
 import Navbar from '../../lib/components/Navbar'
 import MainLayout from '../../lib/components/MainLayout'
-import { fetchBlogPosts } from '../../utils/queries'
 import Client from '../../utils/prismicHelpers'
+import * as Prismic from '@prismicio/client'
 import { RichText } from 'prismic-reactjs'
 import { linkResolver } from '../../prismicConfiguration'
 import { htmlSerializer } from '../../utils/htmlSerializer'
@@ -25,7 +25,7 @@ export default function index(props) {
                             <img src={props.author.data.image.url} className="rounded-full h-6 w-6 md:h-12 md:w-12" />
                             <p className="text-gray-700">by <b>{props.author.data.name}</b></p>
                         </div>
-                        <div style={{backgroundImage: `url(${blogPostData.cover_image.url})`}} className="w-full h-64 md:h-96 bg-cover rounded-xl overflow-hidden py-16"></div>
+                        <div style={{ backgroundImage: `url(${blogPostData.cover_image.url})` }} className="w-full h-64 md:h-96 bg-cover rounded-xl overflow-hidden py-16"></div>
                     </div>
                 </div>
             </div>
@@ -65,12 +65,12 @@ export default function index(props) {
 export async function getStaticProps({ params }) {
     console.log(params)
     const { uid } = params
-    const blogPost = await Client().getByUID(
+    const blogPost = await Client.getByUID(
         'blog',
         uid
     )
 
-    const author = await Client().getByID(blogPost.data.author.id)
+    const author = await Client.getByID(blogPost.data.author.id)
 
     return {
         props: { uid, blogPost, author }
@@ -78,7 +78,11 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-    const posts = await fetchBlogPosts()
+    const posts = await Client.get({
+        predicates: [
+            Prismic.predicate.at("document.type", "blog")
+        ]
+    })
     const paths = posts.results.map((blog) => {
         return {
             params: {

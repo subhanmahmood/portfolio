@@ -2,9 +2,11 @@ import React from 'react'
 import Footer from '../../lib/components/Footer'
 import Navbar from '../../lib/components/Navbar'
 import BlogCard from '../../lib/components/BlogCard'
-import { fetchBlogPosts } from '../../utils/queries'
+import Client from 'utils/prismicHelpers'
+import * as Prismic from '@prismicio/client'
 
 export default function index(props) {
+    console.log(props)
     return (
         <div className="font-display">
             <Navbar />
@@ -36,9 +38,12 @@ export default function index(props) {
 }
 
 export async function getStaticProps() {
-    const posts = await fetchBlogPosts()
+    const posts = await Client.get({
+        predicates: [
+            Prismic.predicate.at("document.type", "blog")
+        ]
+    })
     const blogPosts = posts.results
-
     return {
         props: { blogPosts }
     }
