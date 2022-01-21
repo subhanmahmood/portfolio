@@ -52,8 +52,11 @@ export default function index() {
 
     const deleteLink = async (link) => {
         try {
-            const res = await axios.delete('/api/links', { id: link.id },
-                { headers: { Authorization: 'Bearer ' + currentUser.accessToken } })
+            const res = await axios.delete('/api/links',
+                {
+                    headers: { Authorization: 'Bearer ' + currentUser.accessToken },
+                    data: { id: link.id }
+                })
             setLinks(links.filter(l => l.id !== link.id))
         } catch (err) {
             console.log(err)
