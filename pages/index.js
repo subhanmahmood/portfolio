@@ -37,13 +37,12 @@ export default function Home(props) {
   }
 
   return (
-    <MainLayout className="font-display flex flex-col-reverse md:flex-col items-center min-h-screen">
+    <MainLayout>
       <Head>
         <script data-uid="2cba1297dc" src="https://prodigious-trader-6281.ck.page/2cba1297dc/index.js" />
-
         <title>Home</title>
       </Head>
-      <header className="py-72 max-w-screen-xl mx-auto flex flex-col items-center justify-center h-[40vh]">
+      <header className="py-72 mt-16 md:mt-0 max-w-screen-xl mx-auto flex flex-col items-center justify-center h-[40vh]">
         <p className="text-2xl font-medium">Hi, I'm Subhan</p>
         <h1 className="text-6xl font-bold text-center max-w-screen-md">I&apos;m a frontend developer and content creator</h1>
         <p className="text-neutral-600 text-lg text-center max-w-screen-sm mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pretium id integer faucibus bibendum rhoncus felis feugiat feugiat.</p>
@@ -118,7 +117,7 @@ I've been coding since I was 9, and in the last 10 years I've learnt a variety o
           </div>
         </div>
       </section>
-      <section className="pb-48 py-24 w-full">
+      {/* <section className="pb-48 py-24 w-full">
         <div className="max-w-screen-xl mx-auto px-4">
           <div className="flex flex-col space-y-4">
             <h2 className="text-6xl font-bold text-center">I write sometimes</h2>
@@ -127,13 +126,13 @@ I've been coding since I was 9, and in the last 10 years I've learnt a variety o
           <div className="mt-8 grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
             {Array.from({ length: 3 }).map((e, i) => {
               return (
-                <div className="flex flex-col group transition-all hover:-translate-y-2 cursor-pointer">
+                <div key={i} className="flex flex-col group transition-all hover:-translate-y-2 cursor-pointer">
                   <div className="grid grid-cols-12 w-full">
 
                     <img className="w-full h-72 row-span-1 row-start-1 row-end-1 col-span-12 col-start-1 col-end-13 object-cover transition-all group-hover:shadow-xl z-40" src="https://images.unsplash.com/photo-1628468615047-c70ef9e36ad1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80" />
                     <img className="w-full h-72 row-span-1 row-start-1 row-end-1 col-span-12 col-start-1 col-end-13 object-cover transition-all group-hover:shadow-xl blur group-hover:blur-xl" src="https://images.unsplash.com/photo-1628468615047-c70ef9e36ad1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80" />
                   </div>
-                  {/* <img className=" h-72 object-cover transition-all group-hover:shadow-xl" src="https://images.unsplash.com/photo-1628468615047-c70ef9e36ad1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80" /> */}
+
                   <h3 className="text-3xl font-semibold mt-4">I write sometimes</h3>
                   <p className="text-xl text-neutral-500 mt-2">Subtitle</p>
                 </div>
@@ -144,7 +143,7 @@ I've been coding since I was 9, and in the last 10 years I've learnt a variety o
             <button className="max-w-max font-medium border border-neutral-200 px-6 py-4 shadow-md">Read More</button>
           </div>
         </div>
-      </section>
+      </section> */}
       <section className="pb-48 w-full" id="contact">
         <div className="mx-auto max-w-screen-xl px-6 -my-20">
           <script data-uid="2cba1297dc" src="https://prodigious-trader-6281.ck.page/2cba1297dc/index.js" />

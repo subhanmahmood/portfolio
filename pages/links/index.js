@@ -1,10 +1,11 @@
 import axios from 'axios'
 import React, { useEffect, useState, useRef } from 'react'
-import MainLayout from '../../lib/components/MainLayout'
+import Link from 'next/link'
 import AddLinkForm from 'lib/components/AddLinkForm'
 import LinkCard from 'lib/components/LinkCard'
 import { useAuth } from 'lib/contexts/AuthContext'
 import { ReactSortable } from "react-sortablejs";
+import { FaTiktok, FaLinkedinIn, FaInstagram, FaTwitter } from 'react-icons/fa';
 
 export default function index() {
     const { currentUser } = useAuth()
@@ -14,7 +15,6 @@ export default function index() {
         const fetchLinks = async () => {
             try {
                 const res = await axios.get('/api/links')
-                console.log(res.data)
                 setLinks(res.data.sort((a, b) => a.order - b.order))
             } catch (err) {
                 console.log(err)
@@ -88,7 +88,21 @@ export default function index() {
     return (
         <div className="max-w-screen-sm mx-auto py-8 md:py-24">
             <h1 className="font-bold text-center text-4xl md:text-6xl text-neutral-800">Links</h1>
-            <p className="text-neutral-600 text-center text-lg md:text-xl">View all my lnks</p>
+            <p className="text-neutral-600 text-center text-lg md:text-xl">View all my links</p>
+            <div className="hidden md:flex flex-row items-center justify-center space-x-12 mt-8 mb-8">
+                <Link href="https://twitter.com/subhanmahmoood" target="none">
+                    <FaTwitter className="text-neutral-800 hover:text-neutral-500 h-7 cursor-pointer" />
+                </Link>
+                <Link href="https://instagram.com/subhan.mahmoood" target="none">
+                    <FaInstagram className="text-neutral-800 hover:text-neutral-500 h-7 cursor-pointer" />
+                </Link>
+                <Link href="https://linkedin.com/in/subhanmahmood" target="none">
+                    <FaLinkedinIn className="text-neutral-800 hover:text-neutral-500 h-7 cursor-pointer" />
+                </Link>
+                <Link href="https://tiktok.com/subhan.mahmood" target="none">
+                    <FaTiktok className="text-neutral-800 hover:text-neutral-500 h-7 cursor-pointer" />
+                </Link>
+            </div>
             <div className="max-w-[400px] px-4 mx-auto flex flex-col space-y-4 mt-4">
                 <ReactSortable
                     className="flex flex-col space-y-4"
