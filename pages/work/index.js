@@ -8,9 +8,9 @@ export default function index(props) {
     return (
         <MainLayout>
             <div className="max-w-screen-xl mx-auto px-4">
-                <div className="py-24">
-                    <h1 className="font-bold text-center text-6xl text-neutral-800">My Work and Projects</h1>
-                    <p className="text-neutral-600 text-center text-xl">View all of my work and projects</p>
+                <div className="py-12 md:py-24">
+                    <h1 className="font-bold text-center text-5xl md:text-6xl text-stone-800">My Work and Projects</h1>
+                    <p className="text-stone-600 text-center text-xl mt-4">View all of my work and projects</p>
                 </div>
                 <div className="flex flex-col space-y-16 md:space-y-36 max-w-screen-lg mx-auto pb-36">
                     {props.workItems.map((work, i) => {
