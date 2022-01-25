@@ -7,19 +7,38 @@ import { useAuth } from 'lib/contexts/AuthContext'
 import { ReactSortable } from "react-sortablejs";
 import { toast } from 'react-toastify';
 import { FaTiktok, FaLinkedinIn, FaInstagram, FaTwitter } from 'react-icons/fa';
+import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 import Head from 'next/head'
 
 export default function index() {
     const { currentUser } = useAuth()
     const [links, setLinks] = useState([])
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         const fetchLinks = async () => {
             try {
                 const res = await axios.get('/api/links')
-                setLinks(res.data.sort((a, b) => a.order - b.order))
+                const listOfPromises = Promise.all(res.data.map(async (link) => {
+                    return axios.get(`/api/links/${link.id}/clicks`)
+                }))
+                const linkClicks = await listOfPromises
+                const links = res.data.map((link, i) => {
+                    const clickData = linkClicks[i].data
+                    const percentChange = Math.round(((clickData.today - clickData.yesterday) / clickData.yesterday) * 100 * 100) / 100
+                    return {
+                        ...link,
+                        ...linkClicks[i].data,
+                        percentChange
+                    }
+                })
+                console.log(links)
+                setLinks(links.sort((a, b) => a.order - b.order))
+                setLoading(false)
             } catch (err) {
                 console.log(err)
+                toast('there was an error, please try again')
+                setLoading(false)
             }
         }
         fetchLinks()
@@ -89,6 +108,7 @@ export default function index() {
         }
     }, [links])
 
+
     return (
         <div className="max-w-screen-sm mx-auto py-8 md:py-24">
             <Head>
@@ -111,35 +131,44 @@ export default function index() {
                     <FaTiktok className="text-stone-800 hover:text-stone-500 h-7 cursor-pointer" />
                 </Link>
             </div>
-            <div className="max-w-[400px] px-4 mx-auto flex flex-col space-y-4 mt-4">
-                {
-                    currentUser ? (
-                        <>
-                            <ReactSortable
-                                className="flex flex-col space-y-4"
-                                list={links}
-                                setList={setLinks}>
-                                {links.map((link, i) =>
-                                    <LinkCard key={link.id} data={link} updateLink={updateLink} deleteLink={deleteLink} />)
-                                }
-                            </ReactSortable>
-                            {currentUser && <AddLinkForm onSubmit={addLink} />}
-                        </>
-                    ) : (
-                        <>
-                            <div className="flex flex-col space-y-4">
-                                {links.map((link, i) =>
-                                    <LinkCard key={link.id} data={link} updateLink={updateLink} deleteLink={deleteLink} />)
-                                }
-                            </div>
-                            {currentUser && <AddLinkForm onSubmit={addLink} />}
-                        </>
-                    )
-                }
-            </div>
-            <div className="flex flex-col items-center justify-center py-12">
+            {
+                loading ? (
+                    <div className="flex items-center justify-center">
+                        <AiOutlineLoading3Quarters className="animate-spin" size="2em" />
+                    </div>
+                ) : (
+                    <div className="max-w-[400px] px-4 mx-auto flex flex-col space-y-4 mt-4">
+                        {
+                            currentUser ? (
+                                <>
+                                    <ReactSortable
+                                        className="flex flex-col space-y-4"
+                                        list={links}
+                                        setList={setLinks}>
+                                        {links.map((link, i) =>
+                                            <LinkCard key={link.id} data={link} updateLink={updateLink} deleteLink={deleteLink} />)
+                                        }
+                                    </ReactSortable>
+                                    {currentUser && <AddLinkForm onSubmit={addLink} />}
+                                </>
+                            ) : (
+                                <>
+                                    <div className="flex flex-col space-y-4">
+                                        {links.map((link, i) =>
+                                            <LinkCard key={link.id} data={link} updateLink={updateLink} deleteLink={deleteLink} />)
+                                        }
+                                    </div>
+                                    {currentUser && <AddLinkForm onSubmit={addLink} />}
+                                </>
+                            )
+                        }
+                    </div>
+                )
+            }
+            <div className="flex flex-col items-center justify-center py-12 px-4 max-w-[400px] mx-auto">
                 <h2 className="text-2xl font-medium md:text-4x text-stone-800">Get the good stuff</h2>
-                <p className="prose-lg text-stone-600 mt-2">No spam ever. I promise.</p>
+                <p className="prose-lg text-stone-500 mt-2 text-left md:text-center">I'll occasionally send you productivity and personal development tips. Sometimes, I might even send you my favourite articles, tweets and books for that week :)</p>
+                <p className="prose-lg text-stone-500 mt-2 underline">No spam ever. I promise.</p>
                 <div className="max-w-screen-sm mt-4">
                     <script async data-uid="0984e58a42" src="https://prodigious-trader-6281.ck.page/0984e58a42/index.js"></script>
                 </div>

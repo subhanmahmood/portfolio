@@ -34,10 +34,10 @@ export default function Home(props) {
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
       </Head>
-      <header className="px-4 min-h-screen mt-32 md:mt-0 max-w-screen-xl mx-auto flex flex-col items-center justify-center">
+      <header className="mt-4 px-4 min-h-screen max-w-screen-xl mx-auto flex flex-col items-center justify-start md:justify-center">
         <p className="text-2xl md:text-4xl text-stone-600 font-medium mb-4">Hi, I'm Subhan</p>
         <h1 className="text-5xl md:text-8xl font-bold text-center max-w-screen-xl mb-4">I&apos;m a frontend developer and content creator</h1>
-        <p className="text-stone-600 text-xl text-center max-w-screen-md mt-3">Currently helping small businesses and creators make the most of their customers and audiences, by providing them with great user experiences.</p>
+        <p className="text-stone-600 text-lg md:text-xl text-center max-w-screen-md mt-3">Currently helping small businesses and creators make the most of their customers and audiences, by providing them with great user experiences.</p>
         <div className="flex justify-between space-x-4 md:space-x-8 my-4">
           <div className="flex space-x-2 items-center group">
             <UserIcon className="h-6 text-stone-500 transition-all group-hover:text-stone-800 group-hover:fill-stone-800" />
@@ -56,8 +56,8 @@ export default function Home(props) {
       </header>
 
       <section className="w-full md:px-0">
-        <div className="px-4 md:px-0 md:shadow-xl relative w-full md:max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center bg-white border border-stone-100" >
-          <img className="h-[40vh] w-full object-cover" src="https://images.prismic.io/subhan/76107870-1c9e-421e-a775-dbfaf8550811_grad.JPG?auto=compress,format"/>
+        <div className="px-4 md:px-0 md:shadow-xl relative w-full md:max-w-screen-lg mx-auto grid grid-cols-1 md:grid-cols-2 items-center bg-white border border-stone-100" >
+          <img className="w-full object-cover" src="https://images.prismic.io/subhan/76107870-1c9e-421e-a775-dbfaf8550811_grad.JPG?auto=compress,format"/>
           <div className="w-full flex flex-col gap-y-4 p-6 md:p-8 shadow-lg md:shadow-none">
             <h3 className="font-medium text-4xl ">A little about me</h3>
             <p className="text-stone-600">I'm a frontend developer/designer and content creator with a passion for creating great user experiences.
