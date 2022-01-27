@@ -95,8 +95,9 @@ export default function Home(props) {
               great user experiences. I've been coding since I was 12, and in
               the last 10 years I've learnt a variety of technologies that
               enable me to craft high-quality, responsive digital experiences
-              for my clients. Most recently, I've been helping small businesses
-              and creators make the most of their customers and audiences, by
+              for my clients. <br />
+              <br /> Most recently, I've been helping small businesses and
+              creators make the most of their customers and audiences, by
               providing them with great user experiences.
             </p>
             {/* <button className="max-w-max font-medium bg-black text-white px-6 py-4 shadow-md">View my work</button> */}
