@@ -64,6 +64,7 @@ const index: NextPage = () => {
     try {
       link.order = links!.length;
       const res = await axios.post("/api/links", link, {
+        // @ts-ignore
         headers: { Authorization: "Bearer " + currentUser!.accessToken },
       });
       const linkWithClickData = {
@@ -85,6 +86,7 @@ const index: NextPage = () => {
     const link = linkRef.current;
     try {
       const res = await axios.put("/api/links", link, {
+        // @ts-ignore
         headers: { Authorization: "Bearer " + currentUser!.accessToken },
       });
       console.log(res);
@@ -106,6 +108,7 @@ const index: NextPage = () => {
     const link = linkRef.current;
     try {
       const res = await axios.delete("/api/links", {
+        // @ts-ignore
         headers: { Authorization: "Bearer " + currentUser!.accessToken },
         data: { id: link!.id },
       });
