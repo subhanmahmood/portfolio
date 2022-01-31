@@ -44,4 +44,4 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-export default Work;
+export default index;
