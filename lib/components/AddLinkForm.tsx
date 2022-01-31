@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import { useForm } from "lib/hooks/useForm";
 import { PlusIcon } from "@heroicons/react/outline";
-import OutsideClickWrapper from "lib/components/OutsideClickWrapper.tsx";
+import OutsideClickWrapper from "lib/components/OutsideClickWrapper";
 import EditableTextField from "lib/components/EditableTextField";
+import { LinkData } from "./LinkCard";
 
-export default function AddLinkForm({ onSubmit }) {
+interface Props {
+  onSubmit: (link: LinkData) => void;
+}
+
+const AddLinkForm: React.FC<Props> = ({ onSubmit }) => {
   const [values, handleChange, resetForm] = useForm({ name: "", url: "" });
-  const [adding, setAdding] = useState(false);
+  const [adding, setAdding] = useState<boolean>(false);
 
   const onOutsideClick = () => {
     resetForm();
@@ -33,7 +38,7 @@ export default function AddLinkForm({ onSubmit }) {
           </div>
           <button
             onClick={() => {
-              onSubmit(values);
+              onSubmit(values as LinkData);
               setAdding(false);
             }}
             className="rounded bg-black px-8 text-white shadow"
@@ -51,4 +56,6 @@ export default function AddLinkForm({ onSubmit }) {
       )}
     </OutsideClickWrapper>
   );
-}
+};
+
+export default AddLinkForm;

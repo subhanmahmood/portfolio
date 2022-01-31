@@ -10,11 +10,9 @@ import {
 import NavButton from "./NavButton";
 import { useAuth } from "lib/contexts/AuthContext";
 import { useRouter } from "next/router";
-
-import Link from "next/link";
 import SocialIcons from "./SocialIcons";
 
-export default function Navbar() {
+const Navbar: React.FC = () => {
   const { currentUser, logout } = useAuth();
   const router = useRouter();
   const [open, setOpen] = useState(false);
@@ -133,4 +131,6 @@ export default function Navbar() {
       </div>
     </nav>
   );
-}
+};
+
+export default Navbar;

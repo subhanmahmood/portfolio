@@ -4,6 +4,7 @@ import MainLayout from "../lib/components/MainLayout";
 import WorkCard from "../lib/components/WorkCard";
 import Client from "../utils/prismicHelpers";
 import * as Prismic from "@prismicio/client";
+import { GetStaticProps, NextPage } from "next";
 import {
   ChevronRightIcon,
   UserIcon,
@@ -11,22 +12,13 @@ import {
   HeartIcon,
 } from "@heroicons/react/outline";
 
-export default function Home(props) {
-  console.log(props.workItems);
+interface Props {
+  workItems: WorkItems;
+  posts: PostItems;
+}
 
-  const WorkSectionVariants = {
-    hidden: {
-      opacity: 0,
-      y: -20,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-      },
-    },
-  };
+const Home: NextPage<Props> = (props) => {
+  console.log(props);
 
   return (
     <MainLayout>
@@ -188,14 +180,17 @@ export default function Home(props) {
       </section>
     </MainLayout>
   );
-}
+};
 
-export async function getStaticProps() {
-  const posts = await Client.get(Prismic.predicate.at("document.type", "blog"));
+export const getStaticProps: GetStaticProps = async () => {
+  const posts = await Client.get({
+    predicates: [Prismic.predicate.at("document.type", "blog")],
+  });
 
   const work = await Client.get({
     predicates: [
       Prismic.predicate.at("document.type", "work"),
+      // @ts-ignore
       Prismic.predicate.at("my.work.featured", true),
     ],
   });
@@ -205,4 +200,6 @@ export async function getStaticProps() {
   return {
     props: { posts, workItems },
   };
-}
+};
+
+export default Home;

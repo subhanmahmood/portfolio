@@ -36,12 +36,12 @@ type Props = {
 const LinkCard: React.FC<Props> = ({ data, updateLink, deleteLink }) => {
   const [values, handleChange, resetForm] = useForm(data);
   const { currentUser } = useAuth();
-  const valuesRef = useRef<LinkData>(values);
+  const valuesRef = useRef<LinkData>(values as LinkData);
 
   console.log(data);
 
   useEffect(() => {
-    valuesRef.current = values;
+    valuesRef.current = values as LinkData;
   }, [values]);
 
   const handleClick = async () => {

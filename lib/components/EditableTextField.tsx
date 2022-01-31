@@ -3,10 +3,10 @@ import OutsideClickWrapper from "lib/components/OutsideClickWrapper";
 const cn = require("classnames");
 
 type Props = {
-  value: string;
+  value: any;
   name: string;
   placeholder: string;
-  onChange: () => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   callback?: () => void;
   textClassNames?: string;
   inputClassNames?: string;

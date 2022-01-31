@@ -1,8 +1,9 @@
 import React from "react";
 import Link from "next/link";
 import SocialIcons from "lib/components/SocialIcons";
+import { NextPage } from "next";
 
-export default function Footer() {
+const Footer: NextPage = () => {
   return (
     <footer className="w-full bg-gray-700 py-12 text-white md:py-32">
       <div className="mx-auto max-w-screen-xl px-4">
@@ -43,4 +44,6 @@ export default function Footer() {
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;

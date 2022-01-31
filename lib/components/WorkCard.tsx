@@ -1,10 +1,15 @@
 import React from "react";
 import AnimatedSection from "./AnimatedSection";
-
+import { NextPage } from "next";
 import { ExternalLinkIcon } from "@heroicons/react/outline";
 import { FaGithub } from "react-icons/fa";
-export default function WorkCard({ work, idx }) {
-  console.log(work);
+
+interface Props {
+  work: Work;
+  idx: number;
+}
+
+const WorkCard: NextPage<Props> = ({ work, idx }) => {
   const variants = {
     hidden: {
       opacity: 0,
@@ -56,4 +61,6 @@ export default function WorkCard({ work, idx }) {
       </div>
     </AnimatedSection>
   );
-}
+};
+
+export default WorkCard;

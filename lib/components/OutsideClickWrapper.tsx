@@ -4,7 +4,7 @@ const cn = require("classnames");
 type Props = {
   children: React.ReactNode;
   onOutsideClick: () => void;
-  classNames: string;
+  classNames?: string;
 };
 
 const OutsideClickWrapper: React.FC<Props> = ({

@@ -1,27 +1,27 @@
 import axios from "axios";
 import React, { useEffect, useState, useRef } from "react";
-import Link from "next/link";
 import AddLinkForm from "lib/components/AddLinkForm";
 import LinkCard, { LinkData, LinkDataRef } from "lib/components/LinkCard";
 import { useAuth } from "lib/contexts/AuthContext";
 import { ReactSortable } from "react-sortablejs";
 import { toast } from "react-toastify";
-import { FaTiktok, FaLinkedinIn, FaInstagram, FaTwitter } from "react-icons/fa";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import Head from "next/head";
 import SocialIcons from "lib/components/SocialIcons";
+import { NextPage } from "next";
 
 const roundToTwoDecimalPlaces = (num: number) => {
   return (num * 100) / 100;
 };
 
-export default function index() {
+const index: NextPage = () => {
   const { currentUser } = useAuth();
   const currentLinkRef = useRef<LinkData>();
-  const [links, setLinks] = useState<LinkData[]>();
+  const [links, setLinks] = useState<LinkData[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
+    console.log(currentUser);
     const fetchLinks = async () => {
       try {
         const res = await axios.get("/api/links");
@@ -64,9 +64,18 @@ export default function index() {
     try {
       link.order = links!.length;
       const res = await axios.post("/api/links", link, {
-        headers: { Authorization: "Bearer " + currentUser.accessToken },
+        headers: { Authorization: "Bearer " + currentUser!.accessToken },
       });
-      setLinks([...links!, res.data[0]]);
+      const linkWithClickData = {
+        ...res.data[0],
+        clicks: {
+          today: 0,
+          yesterday: 0,
+          total: 0,
+          percentChange: 0,
+        },
+      };
+      setLinks([...links!, linkWithClickData]);
     } catch (err) {
       console.log(err);
     }
@@ -76,7 +85,7 @@ export default function index() {
     const link = linkRef.current;
     try {
       const res = await axios.put("/api/links", link, {
-        headers: { Authorization: "Bearer " + currentUser.accessToken },
+        headers: { Authorization: "Bearer " + currentUser!.accessToken },
       });
       console.log(res);
       if (updateState) {
@@ -97,7 +106,7 @@ export default function index() {
     const link = linkRef.current;
     try {
       const res = await axios.delete("/api/links", {
-        headers: { Authorization: "Bearer " + currentUser.accessToken },
+        headers: { Authorization: "Bearer " + currentUser!.accessToken },
         data: { id: link!.id },
       });
       setLinks(links!.filter((l) => l.id !== link!.id));
@@ -210,4 +219,6 @@ export default function index() {
       </div>
     </div>
   );
-}
+};
+
+export default index;
