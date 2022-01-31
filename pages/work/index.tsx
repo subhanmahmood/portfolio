@@ -43,3 +43,5 @@ export const getStaticProps: GetStaticProps = async () => {
     props: { workItems },
   };
 };
+
+export default Work;
