@@ -6,18 +6,33 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     fontFamily: {
-      'display': ['Outfit', 'ui-sans-serif', 'system-ui'],
-      'code': ['ui-monospace', "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", "monospace"]
-    }
+      display: ["Outfit", "ui-sans-serif", "system-ui"],
+      serif: [
+        "ui-serif",
+        "Georgia",
+        "Cambria",
+        '"Times New Roman"',
+        "Times",
+        "serif",
+      ],
+      code: [
+        "ui-monospace",
+        "SFMono-Regular",
+        "Menlo",
+        "Monaco",
+        "Consolas",
+        "Liberation Mono",
+        "Courier New",
+        "monospace",
+      ],
+    },
   },
   variants: {
     extend: {
-      transform: ['hover'],
-      rotate: ['group-hover'],
-      translate: ['group-hover']
+      transform: ["hover"],
+      rotate: ["group-hover"],
+      translate: ["group-hover"],
     },
   },
-plugins: [
-    require('@tailwindcss/typography'),
-  ],
-}
+  plugins: [require("@tailwindcss/typography")],
+};
