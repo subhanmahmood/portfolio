@@ -19,6 +19,7 @@ const Quotes: NextPage = () => {
   const [textSize, setTextSize] = useState<string>("sm");
   const [fontClass, setFontClass] = useState<string>("font-outfit");
   const [showAuthor, setShowAuthor] = useState<boolean>(true);
+  const [quoteType, setQuoteType] = useState<string>("today");
 
   let BASE_URL = "";
   if (process.env.NODE_ENV === "development") {
@@ -28,19 +29,20 @@ const Quotes: NextPage = () => {
   }
 
   useEffect(() => {
-    const api_url = `https://zenquotes.io/api/random/${process.env.NEXT_PUBLIC_ZENQUOTES_API_KEY}`;
+    const api_url = `https://zenquotes.io/api/${quoteType}/${process.env.NEXT_PUBLIC_ZENQUOTES_API_KEY}`;
     const fetchQuotes = async () => {
       const res = await axios.get(api_url);
       setQuote(res.data[0]);
     };
     fetchQuotes();
-  }, []);
+  }, [quoteType]);
 
   const getURL = (): string => {
     const widgetURL = new URL(BASE_URL);
     widgetURL.searchParams.set("textSize", textSize);
     widgetURL.searchParams.set("fontClass", fontClass);
     widgetURL.searchParams.set("showAuthor", showAuthor.toString());
+    widgetURL.searchParams.set("quoteType", quoteType);
     try {
       navigator.clipboard.writeText(widgetURL.href);
       toast("Copied to clipboard");
@@ -117,11 +119,33 @@ const Quotes: NextPage = () => {
               <option value="font-code">Monospace</option>
               <option value="font-serif wider">Serif</option>
             </select>
+            <select
+              className="m-0
+                block
+                rounded
+                border
+                border-solid
+                border-gray-300
+                bg-white bg-clip-padding bg-no-repeat
+                px-3 py-1.5 text-base
+                font-normal
+                text-gray-700
+                transition
+                ease-in-out
+                focus:border-stone-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+              onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                setQuoteType(e.target.value)
+              }
+            >
+              <option>Quote Type</option>
+              <option value="today">Daily</option>
+              <option value="random">Random</option>
+            </select>
             <div className="mb-6 flex items-start">
               <div className="flex h-5 items-center">
                 <input
-                  id="remember"
-                  aria-describedby="remember"
+                  id="author"
+                  aria-describedby="author"
                   type="checkbox"
                   checked={showAuthor}
                   onChange={(e) => setShowAuthor(e.target.checked)}
@@ -130,7 +154,7 @@ const Quotes: NextPage = () => {
                 />
               </div>
               <div className="ml-3">
-                <label htmlFor="remember" className="text-gray-900">
+                <label htmlFor="author" className="text-gray-900">
                   Show Author
                 </label>
               </div>

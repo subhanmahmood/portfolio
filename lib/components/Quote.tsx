@@ -31,7 +31,7 @@ const Quote: FC<Props> = ({ textSize, fontClass, quote, showAuthor }) => {
     <div>
       <p className={cn(sizes[textSize].q, fontClass)}>{quote!.q}</p>
       {showAuthor && (
-        <p className={cn("italic text-stone-400", sizes[textSize].a)}>
+        <p className={cn("mt-1 italic text-stone-400", sizes[textSize].a)}>
           - {quote!.a}
         </p>
       )}

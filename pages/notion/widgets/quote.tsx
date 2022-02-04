@@ -20,7 +20,7 @@ const QuotePage: NextPage = () => {
 
   useEffect(() => {
     console.log(router.query);
-    const api_url = `https://zenquotes.io/api/random/${process.env.NEXT_PUBLIC_ZENQUOTES_API_KEY}`;
+    const api_url = `https://zenquotes.io/api/${router.query.quoteType}/${process.env.NEXT_PUBLIC_ZENQUOTES_API_KEY}`;
     const fetchQuotes = async () => {
       const res = await axios.get(api_url);
       setQuote(res.data[0]);
