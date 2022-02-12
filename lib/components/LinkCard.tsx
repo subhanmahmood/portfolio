@@ -3,16 +3,35 @@ import axios from "axios";
 import { useForm } from "lib/hooks/useForm";
 import { XIcon } from "@heroicons/react/outline";
 import { useAuth } from "lib/contexts/AuthContext";
-import { useRouter } from "next/router";
+import {
+  LineChart,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Line,
+  ResponsiveContainer,
+  BarChart,
+  Bar,
+  Cell,
+  Tooltip,
+  Legend,
+} from "recharts";
+
 import { toast } from "react-toastify";
 import { TrendingUpIcon, TrendingDownIcon } from "@heroicons/react/outline";
 import EditableTextField from "lib/components/EditableTextField";
+
+type ClickDay = {
+  name: string;
+  value: number;
+};
 
 type ClickData = {
   today: number;
   yesterday: number;
   total: number;
   percentChange: number;
+  days: ClickDay[];
 };
 
 export type LinkData = {
@@ -74,19 +93,38 @@ const LinkCard: React.FC<Props> = ({ data, updateLink, deleteLink }) => {
               inputClassNames="w-full"
               callback={() => updateLink(valuesRef, true)}
             />
-            {valuesRef.current!.clicks.percentChange > 0 ? (
-              <div className="mt-1 flex items-center text-sm text-emerald-300">
-                <TrendingUpIcon className="mr-1 h-4" />
-                <span>{valuesRef.current!.clicks.percentChange}%</span>
-                <span className="ml-2 text-stone-300">{" (24hrs)"}</span>
+
+            <div className="mt-1 flex justify-around text-sm text-stone-800">
+              <div className="flex flex-1 flex-col items-center">
+                <p>{valuesRef.current!.clicks.yesterday}</p>
+                <p className="text-stone-500">Yesterday</p>
               </div>
-            ) : (
-              <div className="mt-1 flex items-center text-sm text-red-300">
-                <TrendingDownIcon className="mr-1 h-4" />
-                <span>{valuesRef.current!.clicks.percentChange}%</span>
-                <span className="ml-2 text-stone-300">{" (24hrs)"}</span>
+              <div className="flex flex-1 flex-col items-center">
+                <p>{valuesRef.current!.clicks.today}</p>
+                <p className="text-stone-500">Today</p>
               </div>
-            )}
+              <div className="flex flex-1 flex-col items-center">
+                <p>{valuesRef.current!.clicks.total}</p>
+                <p className="text-stone-500">Total</p>
+              </div>
+              {valuesRef.current!.clicks.percentChange > 0 ? (
+                <div className="flex flex-1 flex-col items-center">
+                  <span className="text-emerald-300">
+                    {/* <TrendingUpIcon className="mr-1 h-4" /> */}
+                    <span>{valuesRef.current!.clicks.percentChange}%</span>
+                  </span>
+                  <span className="ml-2 text-stone-300">{" (24hrs)"}</span>
+                </div>
+              ) : (
+                <div className="flex flex-col items-center text-sm text-red-300">
+                  <span className="flex flex-row items-center text-red-400">
+                    {/* <TrendingDownIcon className="mr-1 h-4" /> */}
+                    <span>{valuesRef.current!.clicks.percentChange}%</span>
+                  </span>
+                  <span className="ml-2 text-stone-300">{" (24hrs)"}</span>
+                </div>
+              )}
+            </div>
           </div>
           <button
             onClick={() => deleteLink(valuesRef)}
