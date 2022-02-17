@@ -269,23 +269,9 @@ export default function Home(props) {
             </div>
           </div>
         </section>
-        <section id="templates">
-          <div className="mx-auto max-w-screen-xl px-6">
-            <h2 className="text-3xl font-semibold md:text-4xl">Templates</h2>
-            <p className="mt-4 text-xl text-stone-600">
-              These templates aren&apos;t available yet, sign up below to be the
-              first to find out when they are!
-            </p>
-            <div className="grid grid-cols-1 gap-6 py-4 md:grid-cols-2 lg:grid-cols-3">
-              {props.templates.map((template, i) => {
-                return <TemplateCard key={i} data={template.data} />;
-              })}
-            </div>
-          </div>
-        </section>
         <section
           className="bg-gradient-to-tr from-amber-200 to-amber-500"
-          id="email-wrapper"
+          id="templates"
         >
           <div className="mx-auto -my-20 max-w-screen-xl px-6">
             <script
@@ -294,6 +280,20 @@ export default function Home(props) {
               src="https://prodigious-trader-6281.ck.page/f89bfb05b0/index.js"
             />
             {/* <Script async data-uid="f89bfb05b0" src="https://prodigious-trader-6281.ck.page/f89bfb05b0/index.js" /> */}
+          </div>
+        </section>
+        <section>
+          <div className="mx-auto max-w-screen-xl px-6">
+            <h2 className="text-3xl font-semibold md:text-4xl">Templates</h2>
+            <p className="mt-4 text-xl text-stone-600">
+              These templates aren&apos;t available yet, sign up above to be the
+              first to find out when they are!
+            </p>
+            <div className="grid grid-cols-1 gap-6 py-4 md:grid-cols-2 lg:grid-cols-3">
+              {props.templates.map((template, i) => {
+                return <TemplateCard key={i} data={template.data} />;
+              })}
+            </div>
           </div>
         </section>
         <section>

@@ -16,137 +16,133 @@
   */
 @tailwind utilities;
 
-
-
 a {
-    @apply cursor-pointer;
+  @apply cursor-pointer;
 }
 
 :target {
-    scroll-margin-top: 40px;
+  scroll-margin-top: 60px;
 }
 
-#email-wrapper {
-    margin-top: 160px !important;
-    margin-bottom: 90px !important;
+#templates {
+  margin-top: 160px !important;
+  margin-bottom: 90px !important;
 }
 
 .formkit-form {
-    margin-left: auto;
-    margin-right: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .project {
-    position: relative;
-    display: grid;
-    gap: 10px;
-    grid-template-columns: repeat(12, 1fr);
-    -webkit-box-align: center;
-    align-items: center;
+  position: relative;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(12, 1fr);
+  -webkit-box-align: center;
+  align-items: center;
 }
 
 .project.right .project-image {
-    grid-column: 1 / 0;
-    grid-area: 1 / 1 / -1 / 8;
-    position: relative;
-    z-index: 1;
+  grid-column: 1 / 0;
+  grid-area: 1 / 1 / -1 / 8;
+  position: relative;
+  z-index: 1;
 }
 
 .project.right .project-content {
-    z-index: 2;
-    grid-column: 7 / -1;
-    text-align: right;
-    position: relative;
-    grid-area: 1 / 7 / -1 / -1;
+  z-index: 2;
+  grid-column: 7 / -1;
+  text-align: right;
+  position: relative;
+  grid-area: 1 / 7 / -1 / -1;
 }
 
 .project.right .links {
-    justify-content: end;
+  justify-content: end;
 }
 
 .project.right .tools {
-    justify-content: end;
+  justify-content: end;
 }
 
 .project.left .project-image {
-    grid-column: 1 / 0;
-    grid-area: 1 / 6 / -1 / -1;
-    position: relative;
-    z-index: 1;
+  grid-column: 1 / 0;
+  grid-area: 1 / 6 / -1 / -1;
+  position: relative;
+  z-index: 1;
 }
 
 .project.left .project-content {
-    z-index: 2;
-    grid-column: 6 / -1;
-    text-align: left;
-    position: relative;
-    grid-area: 1 / 1 / -1 / 7;
+  z-index: 2;
+  grid-column: 6 / -1;
+  text-align: left;
+  position: relative;
+  grid-area: 1 / 1 / -1 / 7;
 }
 
 .project.left .links {
-    justify-content: start;
+  justify-content: start;
 }
 
 .project.left .tools {
-    justify-content: start;
+  justify-content: start;
 }
 
 @media only screen and (max-width: 768px) {
+  .seva-form.formkit-form [data-style="clean"] {
+    padding: 0px !important;
+  }
 
-    .seva-form.formkit-form [data-style="clean"] {
-        padding: 0px !important;
-    }
+  .project.right .project-image {
+    grid-column: 1 / 0;
+    grid-area: 1 / 1 / -1 / 13;
+    position: relative;
+    z-index: 1;
+  }
 
-    .project.right .project-image {
-        grid-column: 1 / 0;
-        grid-area: 1 / 1 / -1 / 13;
-        position: relative;
-        z-index: 1;
-    }
+  .project.right .project-content {
+    background: rgba(255, 255, 255, 0.85);
 
-    .project.right .project-content {
-        background: rgba(255, 255, 255, 0.85);
+    padding: 20px;
+    z-index: 2;
+    grid-column: 1 / -1;
+    text-align: left;
+    position: relative;
+    grid-area: 1 / 1 / -1 / 13;
+  }
 
-        padding: 20px;
-        z-index: 2;
-        grid-column: 1 / -1;
-        text-align: left;
-        position: relative;
-        grid-area: 1 / 1 / -1 / 13;
-    }
+  .project.right .links {
+    justify-content: start;
+  }
 
-    .project.right .links {
-        justify-content: start;
-    }
+  .project.right .tools {
+    justify-content: start;
+  }
 
-    .project.right .tools {
-        justify-content: start;
-    }
+  .project.left .project-image {
+    grid-column: 1 / 0;
+    grid-area: 1 / 1 / -1 / 13;
+    position: relative;
+    z-index: 1;
+  }
 
-    .project.left .project-image {
-        grid-column: 1 / 0;
-        grid-area: 1 / 1 / -1 / 13;
-        position: relative;
-        z-index: 1;
-    }
+  .project.left .project-content {
+    background: rgba(255, 255, 255, 0.85);
 
-    .project.left .project-content {
-        background: rgba(255, 255, 255, 0.85);
+    padding: 20px;
+    z-index: 2;
+    grid-column: 1 / -1;
+    text-align: left;
+    position: relative;
+    grid-area: 1 / 1 / -1 / 13;
+  }
 
-        padding: 20px;
-        z-index: 2;
-        grid-column: 1 / -1;
-        text-align: left;
-        position: relative;
-        grid-area: 1 / 1 / -1 / 13;
-    }
+  .project.left .links {
+    justify-content: end;
+  }
 
-    .project.left .links {
-        justify-content: end;
-    }
-
-    .project.left .tools {
-        justify-content: start;
-    }
+  .project.left .tools {
+    justify-content: start;
+  }
 }
-
