@@ -57,11 +57,11 @@ const Quotes: NextPage = () => {
     <MainLayout>
       <input className="hidden" name="copyText" />
       <div className="mx-auto max-w-screen-xl py-12 px-4 md:py-24">
-        <h1 className="text-5xl font-semibold">Notion Widget Generator</h1>
-        <h2 className="text-2xl font-medium">Preview</h2>
+        <h1 className="mb-4 text-5xl font-semibold">Notion Widget Generator</h1>
+
         <div className="flex flex-col-reverse md:flex-row md:space-x-4">
           <div className=" w-full md:w-10/12">
-            <div className="mb-8 flex w-full rounded-lg border border-stone-100 p-6 shadow-md">
+            <div className="mb-8 mt-8 flex w-full rounded-lg border border-stone-100 p-6 shadow-md md:mt-0">
               <Quote
                 fontClass={fontClass}
                 quote={quote}
@@ -71,76 +71,58 @@ const Quotes: NextPage = () => {
             </div>
           </div>
           <div className="flex w-full flex-col space-y-4 md:w-2/12">
-            <select
-              className="m-0
-                block
-                rounded
-                border
-                border-solid
-                border-gray-300
-                bg-white bg-clip-padding bg-no-repeat
-                px-3 py-1.5 text-base
-                font-normal
-                text-gray-700
-                transition
-                ease-in-out
-                focus:border-stone-600 focus:bg-white focus:text-gray-700 focus:outline-none"
-              onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-                setTextSize(e.target.value)
-              }
-            >
-              <option disabled>Text Size</option>
-              <option value="sm">Small</option>
-              <option value="md">Normal</option>
-              <option value="lg">Large</option>
-              <option value="xl">Extra Large</option>
-              <option value="2xl">Extra Extra Large</option>
-            </select>
-            <select
-              className="m-0
-                block
-                rounded
-                border
-                border-solid
-                border-gray-300
-                bg-white bg-clip-padding bg-no-repeat
-                px-3 py-1.5 text-base
-                font-normal
-                text-gray-700
-                transition
-                ease-in-out
-                focus:border-stone-600 focus:bg-white focus:text-gray-700 focus:outline-none"
-              onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-                setFontClass(e.target.value)
-              }
-            >
-              <option>Font Type</option>
-              <option value="font-outfit">Display</option>
-              <option value="font-code">Monospace</option>
-              <option value="font-serif wider">Serif</option>
-            </select>
-            <select
-              className="m-0
-                block
-                rounded
-                border
-                border-solid
-                border-gray-300
-                bg-white bg-clip-padding bg-no-repeat
-                px-3 py-1.5 text-base
-                font-normal
-                text-gray-700
-                transition
-                ease-in-out
-                focus:border-stone-600 focus:bg-white focus:text-gray-700 focus:outline-none"
-              onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-                setQuoteType(e.target.value)
-              }
-            >
-              <option>Quote Type</option>
-              <option value="today">Daily</option>
-              <option value="random">Random</option>
-            </select>
+            <div className="flex flex-col space-y-1">
+              <label className="text-xs font-semibold uppercase text-zinc-500">
+                TEXT SIZE
+              </label>
+              <select
+                className="m-0 block rounded border border-solid border-gray-300 bg-white bg-clip-padding bg-no-repeat px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-stone-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+                onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                  setTextSize(e.target.value)
+                }
+              >
+                <option disabled>Text Size</option>
+                <option value="md">Normal</option>
+                <option value="lg">Large</option>
+                <option value="xl">Extra Large</option>
+                <option value="2xl">Extra Extra Large</option>
+              </select>
+            </div>
+            <div className="flex flex-col space-y-1">
+              <label className="text-xs font-semibold uppercase text-zinc-500">
+                Font Style
+              </label>
+              <select
+                className="m-0 block rounded border border-solid border-gray-300 bg-white bg-clip-padding bg-no-repeat px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-stone-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+                onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                  setFontClass(e.target.value)
+                }
+              >
+                <option disabled>Font Type</option>
+                <option value="font-outfit">Sans-Serif</option>
+                <option value="font-code" className="font-code">
+                  Monospace
+                </option>
+                <option value="font-serif wider" className="font-serif">
+                  Serif
+                </option>
+              </select>
+            </div>
+            <div className="flex flex-col space-y-1">
+              <label className="text-xs font-semibold uppercase text-zinc-500">
+                Quote Type
+              </label>
+              <select
+                className="m-0 block rounded border border-solid border-gray-300 bg-white bg-clip-padding bg-no-repeat px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-stone-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+                onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                  setQuoteType(e.target.value)
+                }
+              >
+                <option disabled>Quote Type</option>
+                <option value="today">Daily</option>
+                <option value="random">Random</option>
+              </select>
+            </div>
             <div className="mb-6 flex items-start">
               <div className="flex h-5 items-center">
                 <input

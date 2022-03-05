@@ -141,7 +141,7 @@ export default function Home(props) {
       <div className="flex flex-col space-y-12 md:space-y-24">
         <section>
           <div className="bg-gradient-to-tr from-amber-200 to-amber-400">
-            <div className="mx-auto flex max-w-screen-xl justify-end md:pt-4">
+            <div className="mx-auto flex max-w-screen-xl justify-end px-0 md:px-4 md:pt-4">
               <a
                 href="https://ntn.so/subhan"
                 className="w-full rounded-none bg-amber-800 px-4 py-4 text-center text-white md:max-w-max md:rounded md:py-2"
@@ -156,9 +156,8 @@ export default function Home(props) {
                   <span className="text-amber-900">without the hassle</span>
                 </h1>
                 <p className="mt-4 max-w-screen-md text-center text-xl text-amber-800">
-                  Notion can be overwhelming if you&apos;ve never used it
-                  before. That&apos;s why I made these templates to help you get
-                  started
+                  Notion can be overwhelming if you&apos;re just starting out.
+                  That&apos;s why I made these templates to help you get started
                 </p>
                 <CTAButton />
               </div>

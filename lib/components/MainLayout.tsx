@@ -7,9 +7,9 @@ interface Props {
 
 const Layout: React.FC<Props> = ({ children }) => {
   return (
-    <div className="font-display">
+    <div className="font-display page-container ">
       <Navbar />
-      <main className="pt-24 md:pt-0">{children}</main>
+      <main className="page-content pt-24 md:pt-0">{children}</main>
       <Footer />
     </div>
   );
